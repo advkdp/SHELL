@@ -1,0 +1,32 @@
+#!/usr/bin/bash
+#Author: BADAL
+#Purpose: Installing multiple packages by cli arg $@
+
+if [[ $# -eq 0 ]]
+then
+	echo "Usage: $0 package1 package2......."
+	exit 1
+fi
+
+if [[ $(id -u) -ne 0 ]]
+then
+	echo "run as root user or use sudo"
+	exit 2
+fi
+
+for pkg in $@
+do
+	if which $pkg &>/dev/null
+	then
+		echo "$pkg is already installed"
+	else
+		echo "$pkg is installing......."
+		yum install $pkg -y &>/dev/null
+		if [[ $? -eq 0 ]]
+		then
+			echo "$pkg installed successfully ..."
+		else
+			echo"$pkg unable to install"
+		fi
+	fi
+done
