@@ -13,6 +13,7 @@ then
   echo please run this shell script as follows:"
   echo "usage:"
   echo "$0 start|stop|restart|status"
+  exit
 fi
 
 #read -p "enter your action: " user_action
