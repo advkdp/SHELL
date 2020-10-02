@@ -1,0 +1,38 @@
+#!/bin/bash
+while read eachserversinfo
+do
+	echo "$eachserversinfo"
+done < serversinfo.txt
+====================================================
+
+#!/bin/bash
+while read server user password command
+do
+	echo "$server"
+done < serversinfo.txt
+
+========================================================
+
+#!/bin/bash
+while read server user password command
+do
+	sshpass -p $password ssh -o StrictHostKeyChecking=No $user@$server "$command"
+done < serversinfo.txt
+
+================================================================
+
+#!/bin/bash
+while read server user password command
+do
+	sshpass -p $password ssh -n -o StrictHostKeyChecking=No $user@$server "$command"
+done < serversinfo.txt
+=====================================================================
+
+#!/bin/bash
+#Fully Modified Script
+
+while read server user password command
+do
+	echo "Executing $command on $server as $user and passwd: $password"
+	sshpass -p $password ssh -n -o StrictHostKeyChecking=No $user@$server "$command"
+done < serversinfo.txt
