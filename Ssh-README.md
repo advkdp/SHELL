@@ -104,3 +104,4 @@ sshpass -f pasd ssh -t -o StrictHostKeyChecking=No ec2-user@13.232.98.172 ll
 sshpass -f pasd ssh -t -o StrictHostKeyChecking=No ec2-user@13.232.98.172 "ls"
 export SSHPASS="redhat"
 sshpass -e ssh -t -o StrictHostKeyChecking=No ec2-user@13.232.98.172 "ls"
+...
