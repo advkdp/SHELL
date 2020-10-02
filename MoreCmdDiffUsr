@@ -1,0 +1,14 @@
+cat serversinfo1.txt Ediffusers.sh 
+13.233.216.85 badal redhat whoami hostname
+13.232.98.172 pawan pawan123 whoami hostname
+192.168.1.3 piu piu9623 whoami hostname
+===================================================
+
+#!/bin/bash
+while read server user password command1 command2
+do
+	echo "Executing $command1 on $server as $user and passwd: $password"
+	sshpass -p $password ssh -n -o StrictHostKeyChecking=No $user@$server "$command1"
+	echo "Executing $command2 on $server as $user and passwd: $password"
+        sshpass -p $password ssh -n -o StrictHostKeyChecking=No $user@$server "$command2"
+done < serversinfo1.txt
