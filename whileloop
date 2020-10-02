@@ -1,0 +1,15 @@
+#!/usr/bin/bash
+filename="serversinfo.txt"
+while read eachline
+do
+	echo "$eachline"
+done < $filename
+
+====================================
+
+#!/usr/bin/bash
+cat serversinfo.txt | while read line
+do
+	echo "$line"
+	echo "-----"
+done
